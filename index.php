@@ -70,24 +70,30 @@ if (isset($_POST['button']))
 
 <hr>
 
-<p>Read File I/O Stream = php.json</p>
-<?PHP 
-$strJsonFileContents = file_get_contents("php.json");
-var_dump($strJsonFileContents); // show contents
 
-$myObj = json_decode($strJsonFileContents , false);
-echo '<br>';
-echo '<br>';
-echo 'SET BACK TEMPERATURE : '.$myObj->px_set_point;
-echo '<br>';
-echo 'SET POINT TEMPERATURE : '.$myObj->px_set_back;
-echo '<br>';
-echo 'SET HIGH TEMPERATURE : '.$myObj->px_high_temp;
-echo '<br>';
-echo 'STATUS : '.$myObj->px_status;
-echo '<br>';
-echo 'API KEY : '.$myObj->api_key_value;
-echo '<br>';
+<?PHP 
+if ($strJsonFileContents = file_get_contents("php.json"))
+{
+	echo '<p>Read File I/O Stream = php.json</p>';
+	
+	var_dump($strJsonFileContents); // show contents
+
+	$myObj = json_decode($strJsonFileContents , false);
+	echo '<br>';
+	echo '<br>';
+	echo 'SET BACK TEMPERATURE : '.$myObj->px_set_point;
+	echo '<br>';
+	echo 'SET POINT TEMPERATURE : '.$myObj->px_set_back;
+	echo '<br>';
+	echo 'SET HIGH TEMPERATURE : '.$myObj->px_high_temp;
+	echo '<br>';
+	echo 'STATUS : '.$myObj->px_status;
+	echo '<br>';
+	echo 'API KEY : '.$myObj->api_key_value;
+	echo '<br>';
+
+}
+
 
 
 
@@ -97,7 +103,7 @@ echo '<br>';
 USE THIS URL TO RESET : 
 <br>
 <hr>
-http://127.0.0.1:8080/pixeltest_aizat/status.php?px_status=0&api_key_value=abc123
+http://localhost/air_pixel/status.php?api_key_value=abc123
 <hr>
 
 <form name="testpixel" method="post" action="index.php">

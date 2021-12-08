@@ -39,7 +39,7 @@ if(isset($_GET['api_key_value']) == 'abc123')
 	$posts = array('px_set_point'=> $myObj->px_set_point, 
 				   'px_set_back'=> $myObj->px_set_back, 
 				   'px_high_temp'=> $myObj->px_high_temp, 
-				   'px_status'=> $_GET['px_status'], 
+				   'px_status'=> $myObj->px_status, 
 				   'api_key_value'=> $myObj->api_key_value);
 
 	$fp = fopen('php.json', 'w');
